@@ -11,7 +11,7 @@ final cardReducer = combineReducers<CardState>([
   TypedReducer<CardState, ClickDetailCardAction>(_clickDetailCard),
 ]);
 
-CardState _loadCard(CardState state, action) {
+CardState _loadCard(CardState state, LoadCardsAction action) {
   Map<int, Card> cards = Map();
   for (int index = 0; index < 10; index++) {
     final card = Card.initial(index);
@@ -20,19 +20,18 @@ CardState _loadCard(CardState state, action) {
   return state.copyWith(ignoreRebuildList: false, cards: Map.unmodifiable(cards));
 }
 
-CardState _clickItemOnCardList(CardState state, action) {
-  final clickItemCardOnListAction = action as ClickItemCardOnListAction;
-  return state.copyWith(ignoreRebuildList: true, currentCardId: clickItemCardOnListAction.id);
+CardState _clickItemOnCardList(CardState state, ClickItemCardOnListAction action) {
+  return state.copyWith(ignoreRebuildList: true, currentCardId: action.id);
 }
 
-CardState _clickDetailCard(CardState state, action) {
-  final clickDetailCardAction = action as ClickDetailCardAction;
+CardState _clickDetailCard(CardState state, ClickDetailCardAction action) {
   final currentCard = state.cards[state.currentCardId];
-  final newValue = currentCard.value + clickDetailCardAction.increaseValue;
+  final newValue = currentCard.value + action.increaseValue;
   final newCurrentCard = currentCard.copyWith(value: newValue);
-  final tempMap = Map.from(state.cards);
 
+  final tempMap = Map.from(state.cards);
   tempMap[currentCard.id] = newCurrentCard;
+
   return state.copyWith(
     ignoreRebuildList: true,
     cards: Map.unmodifiable(tempMap),
