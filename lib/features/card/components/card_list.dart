@@ -19,7 +19,7 @@ class CardList extends StatelessWidget {
     final heightItem = 1.6 * widthItem + padding;
 
     return StoreConnector<AppState, Map<int, model.Card>>(
-      ignoreChange: (state) => state.cardState.ignoreRebuildList && ModalRoute.of(context).isCurrent,
+      ignoreChange: (state) => state.cardState.ignoreRebuildList || !ModalRoute.of(context).isCurrent,
       distinct: true,
       converter: (store) => cardListSelector(store.state),
       builder: (BuildContext context, cards) {
