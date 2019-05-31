@@ -1,13 +1,15 @@
-class ClickDetailCardAction {
+import 'package:equatable/equatable.dart';
+
+class ClickDetailCardAction extends Equatable {
   int increaseValue;
 
   ClickDetailCardAction(this.increaseValue);
 }
 
-class ClickItemCardOnListAction {
+class ClickItemCardOnListAction extends Equatable {
   int id;
 
   ClickItemCardOnListAction(this.id);
 }
 
-class LoadCardsAction {}
+class LoadCardsAction extends Equatable {}

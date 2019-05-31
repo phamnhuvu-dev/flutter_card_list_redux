@@ -20,16 +20,17 @@ class CardState extends Equatable {
     return CardState(
       ignoreRebuildList: false,
       isLoading: false,
-      cards: null,
+      cards: Map(),
       currentCardId: null,
     );
   }
 
-  CardState copyWith(
-      {bool ignoreRebuildList,
-      bool isLoading,
-      Map<int, Card> cards,
-      int currentCardId}) {
+  CardState copyWith({
+    bool ignoreRebuildList,
+    bool isLoading,
+    Map<int, Card> cards,
+    int currentCardId,
+  }) {
     return CardState(
       ignoreRebuildList: ignoreRebuildList ?? this.ignoreRebuildList,
       isLoading: isLoading ?? this.isLoading,

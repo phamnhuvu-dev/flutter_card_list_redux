@@ -28,6 +28,9 @@ dependencies:
   reselect: 0.4.0
   equatable: 0.2.5
 
+dependency_overrides:
+  redux:
+    git: https://github.com/phamnhuvu-dev/redux.dart.git
 
 dev_dependencies:
   flutter_test:

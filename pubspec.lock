@@ -105,10 +105,12 @@ packages:
   redux:
     dependency: "direct main"
     description:
-      name: redux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: "29c1912461def41af61d1ba414a963df6721ec10"
+      url: "https://github.com/phamnhuvu-dev/redux.dart.git"
+    source: git
+    version: "3.0.1"
   reselect:
     dependency: "direct main"
     description:

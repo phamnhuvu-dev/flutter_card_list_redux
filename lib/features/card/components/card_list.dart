@@ -24,7 +24,7 @@ class CardList extends StatelessWidget {
       converter: (store) => cardListSelector(store.state),
       builder: (BuildContext context, cards) {
         print("Build Card List");
-        if (cards == null) {
+        if (cards.isEmpty) {
           store.dispatch(LoadCardsAction());
           return SizedBox(
             height: heightItem,
@@ -32,7 +32,6 @@ class CardList extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (cards.isEmpty) {
         } else {
           final list = cards.values.toList();
           return SizedBox(
